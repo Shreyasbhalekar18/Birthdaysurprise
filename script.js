@@ -11,19 +11,18 @@ const sections = {
     final: document.getElementById('page-final')
 };
 
-const btns = {
-    begin: document.getElementById('btn-begin'),
-    toReasons: document.getElementById('btn-to-reasons'),
+toReasons: document.getElementById('btn-to-reasons'),
     toSurprises: document.getElementById('btn-to-surprises'),
-    toLetter: document.getElementById('btn-to-letter'),
-    toFinal: document.getElementById('btn-to-final'),
-    replay: document.getElementById('btn-replay'),
-    floatingHearts: document.getElementById('btn-floating-hearts'),
-    unlockBox: document.getElementById('btn-unlock-box'),
-    openLetter: document.querySelector('.btn-open-letter'),
-    btnCats: document.getElementById('btn-cats'),
-    musicToggle: document.getElementById('btn-music-toggle'),
-    music: document.getElementById('bg-music')
+        toLetter: document.getElementById('btn-to-letter'),
+            toFinal: document.getElementById('btn-to-final'),
+                replay: document.getElementById('btn-replay'),
+                    floatingHearts: document.getElementById('btn-floating-hearts'),
+                        unlockBox: document.getElementById('btn-unlock-box'),
+                            openLetter: document.querySelector('.btn-open-letter'),
+                                btnCats: document.getElementById('btn-cats'),
+                                    musicToggle: document.getElementById('btn-music-toggle'),
+                                        music: document.getElementById('bg-music'),
+                                            typingText: document.getElementById('typing-text')
 };
 
 // --- Navigation Logic ---
@@ -263,3 +262,40 @@ function createBgHearts() {
 
 // Init
 createBgHearts();
+
+// --- BEAUTY EFFECTS ---
+
+// 1. Typing Effect
+const textToType = "Turning 20 and more beautiful than ever ✨";
+let charIndex = 0;
+
+function typeWriter() {
+    if (charIndex < textToType.length) {
+        btns.typingText.innerHTML += textToType.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter, 50);
+    }
+}
+// Start typing after a short delay
+setTimeout(typeWriter, 1000);
+
+// 2. Cursor Sparkle Trail
+document.addEventListener('mousemove', (e) => {
+    const trail = document.createElement('div');
+    trail.classList.add('cursor-trail');
+    trail.style.left = e.pageX + 'px';
+    trail.style.top = e.pageY + 'px';
+    document.body.appendChild(trail);
+
+    setTimeout(() => {
+        trail.remove();
+    }, 1000);
+});
+
+// 3. Parallax Background
+const bgHearts = document.getElementById('bg-hearts');
+document.addEventListener('mousemove', (e) => {
+    const x = (window.innerWidth - e.pageX) / 50;
+    const y = (window.innerHeight - e.pageY) / 50;
+    bgHearts.style.transform = `translate(${x}px, ${y}px)`;
+});
