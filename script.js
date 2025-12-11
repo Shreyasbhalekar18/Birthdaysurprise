@@ -1,4 +1,3 @@
-
 // GSAP & Confetti Defaults
 const confettiDefaults = { origin: { y: 0.7 } };
 
@@ -11,19 +10,29 @@ const sections = {
     final: document.getElementById('page-final')
 };
 
-toReasons: document.getElementById('btn-to-reasons'),
+// Buttons & controls (fixed — no stray colons)
+const btns = {
+    begin: document.getElementById('btn-begin'),          // update id if your HTML uses a different one
+    toReasons: document.getElementById('btn-to-reasons'),
     toSurprises: document.getElementById('btn-to-surprises'),
-        toLetter: document.getElementById('btn-to-letter'),
-            toFinal: document.getElementById('btn-to-final'),
-                replay: document.getElementById('btn-replay'),
-                    floatingHearts: document.getElementById('btn-floating-hearts'),
-                        unlockBox: document.getElementById('btn-unlock-box'),
-                            openLetter: document.querySelector('.btn-open-letter'),
-                                btnCats: document.getElementById('btn-cats'),
-                                    musicToggle: document.getElementById('btn-music-toggle'),
-                                        music: document.getElementById('bg-music'),
-                                            typingText: document.getElementById('typing-text')
+    toLetter: document.getElementById('btn-to-letter'),
+    toFinal: document.getElementById('btn-to-final'),
+    replay: document.getElementById('btn-replay'),
+    floatingHearts: document.getElementById('btn-floating-hearts'),
+    unlockBox: document.getElementById('btn-unlock-box'),
+    openLetter: document.querySelector('.btn-open-letter'),
+    btnCats: document.getElementById('btn-cats'),
+    musicToggle: document.getElementById('btn-music-toggle'),
+    music: document.getElementById('bg-music'),
+    typingText: document.getElementById('typing-text')
 };
+
+// Optional: ensure DOM is ready before using elements (safe)
+document.addEventListener('DOMContentLoaded', () => {
+    // If your script currently runs code immediately that uses `btns` or `sections`,
+    // you can move that initialization into this function (or ensure <script> is after HTML).
+});
+
 
 // --- Navigation Logic ---
 function switchPage(hideId, showId) {
