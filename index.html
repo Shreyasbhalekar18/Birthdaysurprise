@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love! ❤️</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <div class="floating-hearts-container" id="bg-hearts"></div>
+
+    <main id="app">
+        <!-- 1. Opening Page -->
+        <section id="page-opening" class="page active-page">
+            <div class="content-wrapper centered">
+                <h1 class="animate-title">Happy Birthday My Love ❤️</h1>
+                <p class="animate-subtitle">Turning 20 and more beautiful than ever ✨</p>
+                <div class="balloon-container">
+                    <div class="balloon pink"></div>
+                    <div class="balloon red"></div>
+                    <div class="balloon gold"></div>
+                </div>
+                <button id="btn-begin" class="btn-primary pulsate">Click to Begin 🎁</button>
+            </div>
+        </section>
+
+        <!-- 2. Photo Gallery Section -->
+        <section id="page-gallery" class="page hidden-page">
+            <h2 class="section-title">My Cutest Memories 📸</h2>
+            <div class="gallery-grid">
+                <!-- User: Replace src="her-photo-1.jpg" with real photos -->
+                <div class="gallery-item">
+                    <div class="photo-frame">
+                        <img src="placeholder-1.jpg" alt="Her Cute Photo"
+                            onerror="this.src='https://placehold.co/300x400/pink/white?text=Your+Photo+Here'">
+                    </div>
+                    <p class="caption">My Cutie ❤️</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="photo-frame">
+                        <img src="placeholder-2.jpg" alt="Her Cute Photo"
+                            onerror="this.src='https://placehold.co/300x400/pink/white?text=Sunshine'">
+                    </div>
+                    <p class="caption">My Sunshine ☀️</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="photo-frame">
+                        <img src="placeholder-3.jpg" alt="Her Cute Photo"
+                            onerror="this.src='https://placehold.co/300x400/pink/white?text=Beautiful'">
+                    </div>
+                    <p class="caption">Beautiful as Always ✨</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="photo-frame">
+                        <img src="placeholder-4.jpg" alt="Her Cute Photo"
+                            onerror="this.src='https://placehold.co/300x400/pink/white?text=Smile'">
+                    </div>
+                    <p class="caption">That Smile 😍</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="photo-frame">
+                        <img src="placeholder-5.jpg" alt="Her Cute Photo"
+                            onerror="this.src='https://placehold.co/300x400/pink/white?text=Gorgeous'">
+                    </div>
+                    <p class="caption">Absolutely Gorgeous 💃</p>
+                </div>
+                <div class="gallery-item">
+                    <div class="photo-frame">
+                        <img src="placeholder-6.jpg" alt="Her Cute Photo"
+                            onerror="this.src='https://placehold.co/300x400/pink/white?text=Queen'">
+                    </div>
+                    <p class="caption">My Queen 👑</p>
+                </div>
+            </div>
+            <button id="btn-to-reasons" class="btn-secondary">Tell me why... ❤️</button>
+        </section>
+
+        <!-- 3. Reasons I Love You (New Interactive Section) -->
+        <section id="page-reasons" class="page hidden-page">
+            <h2 class="section-title">Why I Love You ❤️</h2>
+            <div class="carousel-container">
+                <button class="nav-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="card-stack">
+                    <div class="love-card active">
+                        <i class="fas fa-heart card-icon"></i>
+                        <h3>Your Beautiful Heart</h3>
+                        <p>You have this incredible way of making everyone around you feel safe and loved. Your kindness
+                            inspires me every single day.</p>
+                    </div>
+                    <div class="love-card hidden-card">
+                        <i class="fas fa-laugh-beam card-icon"></i>
+                        <h3>Your Smile</h3>
+                        <p>It’s literally my favorite sight in the world. When you smile, everything else just fades
+                            away.</p>
+                    </div>
+                    <div class="love-card hidden-card">
+                        <i class="fas fa-gem card-icon"></i>
+                        <h3>Your Strength</h3>
+                        <p>I admire how you handle everything with such grace. You are so much stronger than you know,
+                            my love.</p>
+                    </div>
+                    <div class="love-card hidden-card">
+                        <i class="fas fa-infinity card-icon"></i>
+                        <h3>Us</h3>
+                        <p>Every moment with you is my new favorite memory. I wouldn't trade our time together for
+                            anything in the universe.</p>
+                    </div>
+                </div>
+                <button class="nav-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <button id="btn-to-surprises" class="btn-secondary">Unwrap Surprises 🎁</button>
+        </section>
+
+        <!-- 4. Interactive Surprises -->
+        <section id="page-surprises" class="page hidden-page">
+            <h2 class="section-title">Special Moments ✨</h2>
+            <div class="surprises-container">
+
+                <!-- Surprise 1: Love Rain -->
+                <div class="surprise-box" id="surprise-1">
+                    <div class="icon-trigger" id="btn-floating-hearts">
+                        <i class="fas fa-heart pulse-icon"></i>
+                    </div>
+                    <p class="box-label">Make it Rain Love</p>
+                    <p class="hidden-message" id="msg-hearts">Falling for you, always. 💖</p>
+                </div>
+
+                <!-- Surprise 2: Memory Box -->
+                <div class="surprise-box" id="surprise-2">
+                    <div class="gift-box" id="btn-unlock-box">
+                        <div class="lid"></div>
+                        <div class="box-body"></div>
+                    </div>
+                    <p class="box-label">A Secret Memory</p>
+                    <div class="box-content hidden" id="box-memories">
+                        <p>"Can't imagine life without you."</p>
+                    </div>
+                </div>
+
+                <!-- Surprise 3: Photo Reveal -->
+                <div class="surprise-box" id="surprise-3">
+                    <div class="blur-reveal" id="star-trigger">
+                        <!-- User: Put a really cute photo here -->
+                        <img src="placeholder-7.jpg" alt="Hidden Cute Photo"
+                            onerror="this.src='https://placehold.co/100x100/pink/white?text=You'">
+                        <div class="overlay"><i class="fas fa-eye"></i></div>
+                    </div>
+                    <p class="box-label">Peekaboo</p>
+                    <div class="hover-message hidden" id="msg-star">Most Beautiful Girl �</div>
+                </div>
+
+                <!-- Surprise 4: Cute Cat/Gif -->
+                <div class="surprise-box" id="surprise-4">
+                    <div class="icon-trigger" id="btn-cats">
+                        <i class="fas fa-cat"></i>
+                    </div>
+                    <p class="box-label">Cutie Check</p>
+                    <div class="hidden-message" id="cat-container" style="display:none; margin-top:10px;">
+                        <img src="https://media1.tenor.com/m/2roX3uxz_68AAAAC/cat-space.gif" alt="Cute Space Cat"
+                            style="width: 100px; border-radius: 10px;">
+                    </div>
+                </div>
+
+            </div>
+            <button id="btn-to-letter" class="btn-secondary">One Last Letter... 💌</button>
+        </section>
+
+        <!-- 5. Love Letter Section -->
+        <section id="page-letter" class="page hidden-page">
+            <h2 class="section-title">A Letter for You 📝</h2>
+            <div class="envelope-container" id="envelope-trigger">
+                <div class="envelope">
+                    <div class="flap"></div>
+                    <div class="body"></div>
+                    <div class="letter" id="actual-letter">
+                        <div class="letter-content">
+                            <h3>My Dearest Love,</h3>
+                            <p id="editable-letter-text">
+                                Happy 20th Birthday, My Love!
+                                I still can’t believe I get to be the person who gets to love you.
+                                Every single day with you feels like a little miracle—one that I definitely don’t
+                                deserve, but I’m very grateful life glitched a bit and let me have you anyway.
+
+                                You have no idea how lucky I feel to have you in my world.
+                                You bring joy I never knew I needed, laughter that makes everything lighter, and a
+                                warmth that somehow reaches places in my heart I thought were frozen forever.
+                                You are my softness, my chaos, my peace, my happiness — all in one.
+
+                                Turning 20 is a big thing…
+                                but honestly, I think the real celebration is me surviving another year of falling even
+                                harder for you every single day.
+                                (Seriously, at this point, gravity is concerned.)
+
+                                I hope today is as magical as you are — which means the stars better work overtime,
+                                because matching your magic is not easy.
+                                I hope you laugh till your cheeks hurt, smile till your eyes shine, and feel so loved
+                                that you start wondering if I accidentally added extra sugar to your birthday cake.
+                                (Yes, I did. You deserve sweetness everywhere.)
+
+                                Thank you for being the reason my heart beats a little faster, my days feel a little
+                                brighter, and my future suddenly looks like a place I actually want to run toward.
+                                I love you more than I could ever put into words…
+                                but since it’s your birthday, I’ll say it:
+
+                                You are my favorite person. My happiness. My comfort. My forever.
+
+                                Happy 20th, my love.
+                                Let’s make this year the most beautiful one yet — together. ❤️
+                                <br><br>
+                                Always yours, <br>
+                                Shreyas
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-open-letter">Open your special letter 💌</button>
+            </div>
+
+            <button id="btn-to-final" class="btn-secondary hidden" style="margin-top: 2rem;">Turn the Page 🎉</button>
+        </section>
+
+        <!-- 5. Final Surprise Page -->
+        <section id="page-final" class="page hidden-page">
+            <div class="content-wrapper centered">
+                <h1 class="big-title">Happy 20th Birthday! 🎉</h1>
+                <p class="love-subtitle">To the most amazing girl in the world ❤️</p>
+
+                <div class="action-buttons">
+                    <button class="btn-action" onclick="alert('Sending a massive virtual HUG! 🤗')">Hug me 🤗</button>
+                    <button class="btn-action" onclick="alert('Sending a sweet virtual KISS! 😘')">Kiss me 😘</button>
+                    <button class="btn-action" id="btn-replay">Replay Surprises 🎀</button>
+                </div>
+            </div>
+            <!-- Canvas for fireworks will be handled by JS/Confetti -->
+        </section>
+
+    </main>
+
+    <!-- Audio (Optional) -->
+    <!-- User: Add music file 'song.mp3' and uncomment below -->
+    <!-- Audio Control -->
+    <div id="music-control" class="music-control hidden">
+        <button id="btn-music-toggle">🎵</button>
+    </div>
+
+    <audio id="bg-music" loop>
+        <!-- Replace 'song.mp3' with your actual file -->
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
