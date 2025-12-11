@@ -181,7 +181,65 @@
                 </div>
 
             </div>
-            <button id="btn-to-letter" class="btn-secondary">One Last Letter... 💌</button>
+            </div>
+            <button id="btn-to-timeline" class="btn-secondary">Our Story... 📖</button>
+        </section>
+
+        <!-- 5. Interactive Timeline (New!) -->
+        <section id="page-timeline" class="page hidden-page">
+            <h2 class="section-title">Our Journey 🗺️</h2>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>First Spark ✨</h3>
+                        <p>The day we met, my life changed forever.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>First Date 🌹</h3>
+                        <p>I was so nervous, but you were perfect.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Falling in Love 💖</h3>
+                        <p>I realized I didn't want to be anywhere else but with you.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Today 🎉</h3>
+                        <p>Celebrating the most amazing girl in the universe.</p>
+                    </div>
+                </div>
+            </div>
+            <button id="btn-to-promises" class="btn-secondary">Promises for You 🤞</button>
+        </section>
+
+        <!-- 6. Our Promises (New!) -->
+        <section id="page-promises" class="page hidden-page">
+            <h2 class="section-title">My Promises to You 💍</h2>
+            <div class="promises-list">
+                <div class="promise-item">
+                    <input type="checkbox" id="p1">
+                    <label for="p1">To always make you laugh when you're sad.</label>
+                </div>
+                <div class="promise-item">
+                    <input type="checkbox" id="p2">
+                    <label for="p2">To listen to you, always.</label>
+                </div>
+                <div class="promise-item">
+                    <input type="checkbox" id="p3">
+                    <label for="p3">To buy you food whenever you're hungry.</label>
+                </div>
+                <div class="promise-item">
+                    <input type="checkbox" id="p4">
+                    <label for="p4">To love you more than yesterday.</label>
+                </div>
+            </div>
+            <button id="btn-to-letter" class="btn-secondary">The Final Note... 💌</button>
         </section>
 
         <!-- 5. Love Letter Section -->
@@ -234,8 +292,6 @@
                 </div>
                 <button class="btn-open-letter">Open your special letter 💌</button>
             </div>
-
-            <button id="btn-to-final" class="btn-secondary hidden" style="margin-top: 2rem;">Turn the Page 🎉</button>
         </section>
 
         <!-- 5. Final Surprise Page -->
@@ -266,6 +322,51 @@
         <!-- Replace 'song.mp3' with your actual file -->
         <source src="song.mp3" type="audio/mpeg">
     </audio>
+
+    <!-- Letter Overlay (New Modal Style) -->
+    <div id="letter-overlay" class="letter-overlay hidden">
+        <div class="letter-modal">
+            <button id="close-letter">×</button>
+            <div class="letter-text-content">
+                <h3>My Dearest Love,</h3>
+                <p>
+                    Happy 20th Birthday, My Love! <br><br>
+                    I still can’t believe I get to be the person who gets to love you.
+                    Every single day with you feels like a little miracle—one that I definitely don’t
+                    deserve, but I’m very grateful life glitched a bit and let me have you anyway.
+                    <br><br>
+                    You have no idea how lucky I feel to have you in my world.
+                    You bring joy I never knew I needed, laughter that makes everything lighter, and a
+                    warmth that somehow reaches places in my heart I thought were frozen forever.
+                    You are my softness, my chaos, my peace, my happiness — all in one.
+                    <br><br>
+                    Turning 20 is a big thing…
+                    but honestly, I think the real celebration is me surviving another year of falling even
+                    harder for you every single day.
+                    (Seriously, at this point, gravity is concerned.)
+                    <br><br>
+                    I hope today is as magical as you are — which means the stars better work overtime,
+                    because matching your magic is not easy.
+                    I hope you laugh till your cheeks hurt, smile till your eyes shine, and feel so loved
+                    that you start wondering if I accidentally added extra sugar to your birthday cake.
+                    (Yes, I did. You deserve sweetness everywhere.)
+                    <br><br>
+                    Thank you for being the reason my heart beats a little faster, my days feel a little
+                    brighter, and my future suddenly looks like a place I actually want to run toward.
+                    I love you more than I could ever put into words…
+                    but since it’s your birthday, I’ll say it:
+                    <br><br>
+                    You are my favorite person. My happiness. My comfort. My forever.
+                    <br><br>
+                    Happy 20th, my love.
+                    Let’s make this year the most beautiful one yet — together. ❤️
+                    <br><br>
+                    Always yours, <br>
+                    Shreyas
+                </p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

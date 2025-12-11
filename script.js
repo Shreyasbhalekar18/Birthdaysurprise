@@ -15,12 +15,16 @@ const btns = {
     begin: document.getElementById('btn-begin'),          // update id if your HTML uses a different one
     toReasons: document.getElementById('btn-to-reasons'),
     toSurprises: document.getElementById('btn-to-surprises'),
+    toTimeline: document.getElementById('btn-to-timeline'),
+    toPromises: document.getElementById('btn-to-promises'),
     toLetter: document.getElementById('btn-to-letter'),
     toFinal: document.getElementById('btn-to-final'),
     replay: document.getElementById('btn-replay'),
     floatingHearts: document.getElementById('btn-floating-hearts'),
     unlockBox: document.getElementById('btn-unlock-box'),
     openLetter: document.querySelector('.btn-open-letter'),
+    letterOverlay: document.getElementById('letter-overlay'),
+    closeLetter: document.getElementById('close-letter'),
     btnCats: document.getElementById('btn-cats'),
     musicToggle: document.getElementById('btn-music-toggle'),
     music: document.getElementById('bg-music'),
@@ -203,21 +207,49 @@ btns.btnCats.addEventListener('click', () => {
     }
 });
 
-
-// 4. Surprises -> Letter
-btns.toLetter.addEventListener('click', () => {
-    switchPage('page-surprises', 'page-letter');
+// 4. Surprises -> Timeline
+btns.toTimeline.addEventListener('click', () => {
+    switchPage('page-surprises', 'page-timeline');
+    // Animate timeline items
+    gsap.from('.timeline-item', { opacity: 0, x: -50, stagger: 0.3, duration: 1, scrollTrigger: '.timeline-container' });
 });
 
-// Open Letter
+// 5. Timeline -> Promises
+btns.toPromises.addEventListener('click', () => {
+    switchPage('page-timeline', 'page-promises');
+});
+
+// 6. Promises -> Letter
+btns.toLetter.addEventListener('click', () => {
+    switchPage('page-promises', 'page-letter');
+});
+
+// Open Letter Modal
 btns.openLetter.addEventListener('click', () => {
+    // Open Envelope Animation
     const envelope = document.querySelector('.envelope');
     envelope.classList.add('open');
     btns.openLetter.style.display = 'none';
 
+    // Show Modal after envelope opens
     setTimeout(() => {
+        btns.letterOverlay.classList.remove('hidden');
+        btns.letterOverlay.classList.add('visible');
+    }, 800);
+});
+
+// Close Letter Modal
+btns.closeLetter.addEventListener('click', () => {
+    btns.letterOverlay.classList.remove('visible');
+    setTimeout(() => {
+        btns.letterOverlay.classList.add('hidden');
+        // Show button to final page
         document.getElementById('btn-to-final').classList.remove('hidden');
-    }, 2000);
+        // Actually, let's just go to final page immediately for better flow?
+        // Or let user choose. Let's redirect to final page.
+        switchPage('page-letter', 'page-final');
+        startFireworks();
+    }, 500);
 });
 
 // 5. Letter -> Final
