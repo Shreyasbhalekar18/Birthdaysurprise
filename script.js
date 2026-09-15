@@ -31,6 +31,11 @@ const btns = {
     typingText: document.getElementById('typing-text')
 };
 
+// Safe addEventListener helper — avoids errors when elements are missing
+function safeAdd(el, event, handler) {
+    if (!el) return;
+    el.addEventListener(event, handler);
+}
 // Optional: ensure DOM is ready before using elements (safe)
 document.addEventListener('DOMContentLoaded', () => {
     // If your script currently runs code immediately that uses `btns` or `sections`,
@@ -56,7 +61,7 @@ function switchPage(hideId, showId) {
 }
 
 // 1. Opening Page
-btns.begin.addEventListener('click', () => {
+safeAdd(btns.begin, 'click', () => {
     confetti({ ...confettiDefaults, particleCount: 100, spread: 70, origin: { y: 0.6 } });
     switchPage('page-opening', 'page-gallery');
 
@@ -95,14 +100,14 @@ function updateCarousel() {
     });
 }
 
-nextBtn.addEventListener('click', () => {
+safeAdd(nextBtn, 'click', () => {
     if (activeIndex < cards.length - 1) {
         activeIndex++;
         updateCarousel();
     }
 });
 
-prevBtn.addEventListener('click', () => {
+safeAdd(prevBtn, 'click', () => {
     if (activeIndex > 0) {
         activeIndex--;
         updateCarousel();
@@ -125,7 +130,8 @@ function playMusic() {
     });
 }
 
-btns.musicToggle.addEventListener('click', () => {
+safeAdd(btns.musicToggle, 'click', () => {
+    if (!btns.music) return;
     if (isPlaying) {
         btns.music.pause();
         btns.musicToggle.innerHTML = "🔇"; // Muted/Paused
@@ -139,19 +145,19 @@ btns.musicToggle.addEventListener('click', () => {
 
 
 // 2. Gallery -> Reasons
-btns.toReasons.addEventListener('click', () => {
+safeAdd(btns.toReasons, 'click', () => {
     switchPage('page-gallery', 'page-reasons');
     updateCarousel();
 });
 
 // 3. Reasons -> Surprises
-btns.toSurprises.addEventListener('click', () => {
+safeAdd(btns.toSurprises, 'click', () => {
     switchPage('page-reasons', 'page-surprises');
 });
 
 // 3. Surprises Interaction
 // Surprise 1: Floating Hearts
-btns.floatingHearts.addEventListener('click', () => {
+safeAdd(btns.floatingHearts, 'click', () => {
     const msg = document.getElementById('msg-hearts');
     msg.classList.add('visible');
 
@@ -171,7 +177,7 @@ btns.floatingHearts.addEventListener('click', () => {
 });
 
 // Surprise 2: Unlock Box
-btns.unlockBox.addEventListener('click', () => {
+safeAdd(btns.unlockBox, 'click', () => {
     btns.unlockBox.style.display = 'none';
     const content = document.getElementById('box-memories');
     content.classList.remove('hidden');
@@ -185,8 +191,8 @@ btns.unlockBox.addEventListener('click', () => {
 const starTrigger = document.getElementById('star-trigger');
 const starMsg = document.getElementById('msg-star');
 
-starTrigger.addEventListener('mouseenter', revealStar);
-starTrigger.addEventListener('click', revealStar);
+safeAdd(starTrigger, 'mouseenter', revealStar);
+safeAdd(starTrigger, 'click', revealStar);
 
 function revealStar() {
     starTrigger.classList.add('revealed');
@@ -195,7 +201,7 @@ function revealStar() {
 }
 
 // Surprise 4: Cute Cats
-btns.btnCats.addEventListener('click', () => {
+safeAdd(btns.btnCats, 'click', () => {
     const catContainer = document.getElementById('cat-container');
     if (catContainer.style.display === "none") {
         catContainer.style.display = "block";
@@ -208,24 +214,24 @@ btns.btnCats.addEventListener('click', () => {
 });
 
 // 4. Surprises -> Timeline
-btns.toTimeline.addEventListener('click', () => {
+safeAdd(btns.toTimeline, 'click', () => {
     switchPage('page-surprises', 'page-timeline');
     // Animate timeline items
     gsap.from('.timeline-item', { opacity: 0, x: -50, stagger: 0.3, duration: 1, scrollTrigger: '.timeline-container' });
 });
 
 // 5. Timeline -> Promises
-btns.toPromises.addEventListener('click', () => {
+safeAdd(btns.toPromises, 'click', () => {
     switchPage('page-timeline', 'page-promises');
 });
 
 // 6. Promises -> Letter
-btns.toLetter.addEventListener('click', () => {
+safeAdd(btns.toLetter, 'click', () => {
     switchPage('page-promises', 'page-letter');
 });
 
 // Open Letter Modal
-btns.openLetter.addEventListener('click', () => {
+safeAdd(btns.openLetter, 'click', () => {
     // Open Envelope Animation
     const envelope = document.querySelector('.envelope');
     envelope.classList.add('open');
@@ -239,7 +245,7 @@ btns.openLetter.addEventListener('click', () => {
 });
 
 // Close Letter Modal
-btns.closeLetter.addEventListener('click', () => {
+safeAdd(btns.closeLetter, 'click', () => {
     btns.letterOverlay.classList.remove('visible');
     setTimeout(() => {
         btns.letterOverlay.classList.add('hidden');
@@ -253,7 +259,7 @@ btns.closeLetter.addEventListener('click', () => {
 });
 
 // 5. Letter -> Final
-btns.toFinal.addEventListener('click', () => {
+safeAdd(btns.toFinal, 'click', () => {
     switchPage('page-letter', 'page-final');
     startFireworks();
 });
@@ -281,7 +287,7 @@ function startFireworks() {
     }, 250);
 }
 
-btns.replay.addEventListener('click', () => {
+safeAdd(btns.replay, 'click', () => {
     location.reload();
 });
 
